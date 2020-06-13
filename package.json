@@ -1,0 +1,27 @@
+{
+  "name": "vuepress-blog",
+  "version": "1.0.0",
+  "description": "{**}",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy": "bash deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "hhttps://github.com/Galileo01/vuepress_blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.5.1",
+    "@vuepress/plugin-medium-zoom": "^1.5.1",
+    "@vuepress/plugin-search": "^1.5.1",
+    "vuepress": "^1.5.1"
+  },
+  "dependencies": {
+    "@vssue/api-github-v4": "^1.4.0"
+  }
+}
