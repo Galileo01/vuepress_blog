@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
-/dist
+##静态文件
+dist 
+##
 
 # local env files
 .env.local
