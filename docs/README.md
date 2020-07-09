@@ -1,7 +1,7 @@
 ---
 home: true
 # heroImage: /hero.png
-heroText: JOE 的Blog
+heroText: Mark's Blog
 tagline: Blog
 actionText: 查看所有文章 →
 actionLink: /guide
