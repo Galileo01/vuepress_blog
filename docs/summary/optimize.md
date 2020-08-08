@@ -59,7 +59,7 @@ const Login = () => import('views/Login');//使用 import 函数的方式懒加�
 
 Vue 在遇到像 `Object.freeze()` 这样被设置为不可配置之后的对象属性时，**不会为对象加上 setter getter 等数据劫持的方法** ，减少性能开销
 
-**适合展示类的场景**，如果你的数据属性需要改变，可以重新替换成一个新的 `Object.freeze()`的对象
+**适合展示类的场景**，如果你的数据属性需要改变，可以**重新替换**成一个新的 `Object.freeze()`的对象
 
 ## 上线阶段
 
