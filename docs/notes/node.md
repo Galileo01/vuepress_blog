@@ -1,5 +1,3 @@
-
-
 ## Node 学习笔记
 
 ### 一.Node.js 介绍     
@@ -749,42 +747,6 @@ app.use( (req, res, next)=> {
   })
 ```
 
-
-
-### .Node 中的中间件
-
-在NodeJS中，中间件主要是指封装 了对 Http请求 细节的处理  **方法，函数**
-
-用来简化和隔离**基础设施与业务逻辑之间的细节**，让开发者能够关注在业务的开发上，以达到提升开发效率的目的。
-
-1. app.use（[path，] **callback** [，callback ...]）
-
-   将指定的一个或多个[中间件](https://www.expressjs.com.cn/guide/using-middleware.html)函数**安装在指定的路径**上：当所**请求路径与 path匹配 **时，将执行中间件函数
-
-   - path  **默认'/'**
-   - callback 回调函数；可：
-     - 中间件功能。
-     - 一系列中间件功能（以逗号分隔）。
-     - 一系列中间件功能。
-
-2. express 内置中间件
-
-   - express.json（[选项]）
-
-     这是Express中的内置中间件功能。它使用[body解析器](https://www.expressjs.com.cn/en/resources/middleware/body-parser.html)解析带有JSON负载的传入请求 。
-
-   - express.urlencoded（[选项]） 
-
-     使用urlencode的有效载荷解析传入的请求，并且基于body-parser
-
-   - 
-
-3. 第三方中间件
-
-
-
-
-
 ### 十三.使用nodemon 监控文件变化并重新运行
 
 nodemon 可以用来监控代码变化自动重启服务器
@@ -854,19 +816,6 @@ app.use(router);
 
 ```
 
-
-
-###  Node 当中的 ./ 
-
-- `__dirname `始终是当前**正在执行的脚本**所在的目录路径
-
-- 当您使用`path`和`fs`等库时  :  **.**     表示终端窗口（即**工作目录**）中运行`node`命令的**js文件所在目录**    与 process.cwd()  一致
-- 执行  require()，.  表示执行require （） 当前所在的 js 文件
-
-
-
-
-
 ### 十五.MongoDB   
 
 MongoDB 是 介于  关系数据库和非关系数据库之间 ，关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。
@@ -890,3 +839,312 @@ NoSql :not only sql  **非关系型 数据库**
 
 
 mongoDB是 一种文档 存储，数据存储为一个文档，数据结构由键值(key=>value)对组成，BSON（一种类似于Json）
+
+
+
+### 十六.补充知识点
+
+#### 1.path 模块
+
+路径操作模块
+
+- path.dirname(path)
+
+- path.extname(path) 获取文件扩展名
+
+- path.parse(path)
+
+  解析为一个包含信息（base，ext，root，name等等）的对象，
+
+- path.join([...paths])
+
+  拼接路径，返回正确的路径
+
+  **用于在文件操作中解决，./ 为执行node 指令 路径 的问题 ，**
+
+#### 2.___________dirname,_______filename
+
+node的**每个模块**，还有属性:___________dirname,_______filename
+
+**___dirname :当前模块的目录名**
+
+用于在fs模块使用中，使用绝对路径，读取文件，而不是相对路径
+
+_______filename：**当前模块**的文件名（绝对路径）
+
+
+
+**Node 当中的 ./** 
+
+- `__dirname `始终是当前**模块文件**所在的目录路径
+
+- 当您使用`path`和`fs`等库时  :  **.**     表示终端窗口（即**工作目录**）中运行`node`命令**所在目录**    与 process.cwd()  一致
+- 执行  require()，.  表示执行require （） 当前所在的 **模块文件**路径
+
+```js
+fs.readFile(path.join(__dirname,'./test.txt'),(err,data)=>{
+    console.log(data);
+})
+```
+
+
+
+
+
+
+
+### 十七.实战项目
+
+#### 1.目录结构
+
+#### 2.路由设计
+
+
+
+#### 3.表单同步提交和异步提交
+
+- 表单 **默认的**同步提交会把响应结果 渲染到页面
+
+  ajax诞生之前，就是在**原来的**表单提交页面 **渲染响应的信息**，
+
+- 服务端重定向对异步请求无效
+
+
+
+### 4.session
+
+http 是无状态的
+
+cookie：用于保存一些不太敏感的信息，用户名等
+
+session:会话
+
+浏览器第一次访问服务器，**服务器会创建一个session**，然后同时为该session生成一个唯一的会话的key,也就是**sessionid**，然后，将sessionid及对应的session分别作为key和value保存到缓存中，也可以持久化到数据库中，然后服务器再把sessionid，以cookie的形式发送给客户端。这样浏览器下次再访问时，**会直接带着cookie中的sessionid**。然后服务器根据sessionid找到对应的**session**进行匹配；
+
+- **使用cookie 管理Session ID**,
+
+服务端发放Session ID ,客户端存储在cookie中 ，在后面的请求中携带cookie，用于服务端
+
+
+
+### 5.token
+
+ 浏览器第一次访问服务器，根据传过来的唯一标识userId，服务端会通过一些算法，如常用的HMAC-SHA256算法，**然后加一个密钥，生成一个token，**然后通过BASE64编码一下之后将这个token发送给客户端；客户端将token保存起来，**下次请求时，带着token**，服务器收到请求后，然后会**用相同的算法和密钥去验证token**，如果通过，执行业务操作，不通过，返回不通过信息
+
+session和token 各有利弊，session 需要在服务器存储状态，token不需要
+
+- 使用jsonwebtoken 模块
+
+  - 安装
+
+    npm install jsonwebtoken
+
+  - 使用
+
+    - **签发token**
+
+      jwt.sign(payload, secretOrPrivateKey, [options, callback])
+
+      **payload**：object/string,      携带的数据，对象会被自动转换为json 
+
+      **secretOrPrivateKey** : 密钥，**与验证的的时候必须一致**
+
+      **options**属性
+
+      1. algorithm  加密的算法 默认HS256
+
+      2. expiresIn：表示 token 过期的时间 的数字或者描述时间的 字符串  单位 ms
+
+         Eg: `60`, `"2 days"`, `"10h"`, `"7d"`  更多请看 [ms](https://github.com/vercel/ms)
+
+    - **验证token**
+
+      jwt.verify(token, secretOrPublicKey, [options, **callback**])
+
+       密钥必须与 签发时一致
+
+  ​            callback：（err,**payload**） payload 就是之前签发token 时的数据，
+
+  如果不通过 验证，err 非空
+
+  ```js
+  //异步 使用
+  jwt.verify(token, 'shhhhh', function(err, decoded) {
+    console.log(decoded.foo) // bar
+  });
+  //同步 使用
+  try {
+    var decoded = jwt.verify(token, 'wrong-secret');
+  } catch(err) {
+    // err
+  }
+  ```
+
+  
+
+### 6.中间件
+
+在NodeJS中，中间件主要是指**封装 了对 Http请求 细节的    一些 处理**  **方法，函数**
+
+框架 就是由一系列 中间件 构成
+
+用来简化和隔离**基础设施与业务逻辑之间的细节**，让开发者能够关注在业务的开发上，以达到提升开发效率的目的。
+
+#### 使用
+
+1. app.use（[path，] **callback** [，callback ...]）
+
+   将指定的一个或多个[中间件](https://www.expressjs.com.cn/guide/using-middleware.html)函数**安装在指定的路径**上：当所**请求路径与 path匹配 **时，将执行中间件函数
+
+   - path  **默认'/'**
+
+   - callback 回调函数；可：
+
+     - 中间件功能。
+
+     - 一系列中间件功能（以逗号分隔）。
+
+     - 一系列中间件功能。
+
+       
+
+#### express 内置中间件
+
+1. 应用级别的 中间件
+
+   app.get   app.post   app.put  app.delete 等
+
+2. 路由级别的中间件
+
+   express.Router
+
+3. 错误处理中间件
+
+   - express 默认
+
+     Express带有内置的错误处理程序，可处理应用程序中可能遇到的任何错误。该默认的错误处理中间件功能已添加到中间件功能堆栈的末尾。
+
+     **将错误传递给`next(err)`**您并且未在自定义错误处理程序中**进行处理**，则**它将由内置/自定义错误处理程序进行处理**
+
+   - 自定义
+
+   定义错误处理中间件功能的方式与其他中间件功能相同，只是错误处理功能具有四个参数而不是三个参数 `(err, req, res, next)`  必须写全 4个
+
+   ````js
+   app.use(function (err, req, res, next) {
+     console.error(err.stack)
+     res.status(500).send('Something broke!')
+   })
+   ````
+
+4. 内置中间件
+   - [express.static](https://www.expressjs.com.cn/en/4x/api.html#express.static)提供静态资产，例如HTML文件，图像等。
+   - [express.json](https://www.expressjs.com.cn/en/4x/api.html#express.json)使用JSON负载解析传入的请求。
+   - [express.urlencoded](https://www.expressjs.com.cn/en/4x/api.html#express.urlencoded)使用URL编码的有效内容解析传入的请求。
+5. 第三方/自定义中间件
+
+**function (req,res,next)**
+
+三个参数
+
+req:
+
+res:
+
+next:
+
+一个函数，**调用next() 进入下一个中间件**，不调用next()不会调用下一个中间件
+
+ 调用app.use  添加的 先后顺序 决定调用顺序
+
+
+
+```js
+//中间件的定义
+function (req,res,next){
+    
+    next();
+}
+```
+
+自定义中间件可以 用来处理请求，如 验证token 等
+
+
+
+
+
+### 7. 文件上传
+
+使用 multer 模块 
+
+multer 是 express 官方开发的一个中间件
+
+只会对请求头中**携带content-type：multipart/form-data**的请求
+
+- 基础使用
+
+```js
+//使用
+var express = require('express');
+var multer  = require('multer')
+
+var app = express();
+var upload = multer({ dest: 'upload/' });// dest：文件保存路径 文件保存在 ./upload 目录下
+// 单图上传
+//.single(fieldname)
+app.post('/upload', upload.single('logo'), function(req, res, next){
+    res.send({ret_code: '0'});
+});
+//多图上传
+//.array(fieldname[, maxCount])
+app.post('/upload', upload.array('logo', 2), function(req, res, next){
+    res.send({ret_code: '0'});
+});
+
+
+//获取文件信息
+app.post('/upload', upload.single('logo'), function(req, res, next){
+   req.file.xxx //字段如下表格
+});
+
+
+
+```
+
+**注**:single（**filename**）/array(**filname**)    传入的filename 要和 form 表单 name 字段一致
+
+文件信息
+
+| 键             | 描述                         | 注意          |
+| -------------- | ---------------------------- | ------------- |
+| `fieldname`    | 表单中指定的字段名称         |               |
+| `originalname` | 用户计算机上文件的名称       |               |
+| `encoding`     | 文件的编码类型               |               |
+| `mimetype`     | 文件的哑剧类型               |               |
+| `size`         | 文件大小（以字节为单位）     |               |
+| `destination`  | 文件已保存到的文件夹         | `DiskStorage` |
+| `filename`     | 文件中的文件名 `destination` | `DiskStorage` |
+| `path`         | 上载文件的完整路径           | `DiskStorage` |
+| `buffer`       | `Buffer`整个文件的A          |               |
+
+- diskStorage 
+
+  当需要对 文件名和路径进行控制时， 需要使用 diskStorage函数
+  multer.diskStorage 函数， 传入两个选项，返回字符串的函数/字符串
+
+  
+
+  ```js
+  const storage = multer.diskStorage({
+      destination: path.join(__dirname,'../public/img/avatar'),
+      filename(req, file, cb) {
+          cb(null, req.email + '-' + file.originalname);//使用 文件 本来的名称，该名称包含原本的后缀名
+      },
+  });
+  const upload = multer({ storage });
+  ```
+
+  **注意： Multer不会为您添加任何文件扩展名**，您的函数应返回带有文件扩展名的完整文件名。
+
+  每个函数都会传递请求（`req`）和有关文件（`file`）的一些信息，以帮助做出决定。
+

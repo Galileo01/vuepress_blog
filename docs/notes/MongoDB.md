@@ -548,7 +548,7 @@ skip，limit，sort 三者 无论相对位置，最后都是 sort->skpi->limit
 mongoose.connect('**mongodb**://ip:端口/数据库名')
 
 ```js
-mongoose.connect('**mongodb**://localhost:27017/test'，{ useUnifiedTopology: true ,useNewUrlParser:true})
+mongoose.connect('mongodb://localhost:27017/test'，{ useUnifiedTopology: true ,useNewUrlParser:true})
 
 //注：如果linux/windows的mongodb 设置了用户验证，需要在连接时输入用户名密码
 mongoose.connect('mongodb://username:pass@127.0.0.1/crud?authSource=admin',{ useUnifiedTopology: true ,useNewUrlParser:true});
@@ -840,7 +840,11 @@ const stu = new StuModel({
 
 ​        options 和toJSON方法一致
 
+- doc.id属性 
 
+   documents._id 的字符串形式，
+
+  使用filter 进行查找时，_id可以传入字符串，而，**document 之间的比较**   需要使用  .id属性，进行字符串的比较，因为 **对象形式**的ObjectId()是一个引用，始终不相等，
 
 ### Mongoose 的模块化
 
