@@ -62,6 +62,7 @@
   sudo ./mongod --config ./mongodb.conf
   ./mongo 进入数据库前台命令行
   mongo --username admin --password 15823413506  #有用户验证的情况下连接数据库
+  #--config 缩写成-f
   ````
 
 - 配置$PATH（推荐，非必须）
@@ -79,7 +80,7 @@
 - 设置一个账户，授权使用数据库，更加安全（最好设置，不是必须的步骤）
 
   ```shell
-  use admin
+  use admin #切换到admin
   
   db.createUser({user:"admin",pwd:"158...",roles:["root"]})
   db.auth('root','123456'); # 使用 账户登录
@@ -325,7 +326,7 @@ db.col.find({title:/^教/})
          {
            $set: { "size.uom": "cm", status: "P" },#更新 size.uom， status
            $unset:{adress:""},  #移除address 属性
-           $currentDate: { lastModified: true }
+           $currentDate: { lastModified: true }# 当前时间
          }
       )
       ```
@@ -554,6 +555,8 @@ mongoose.connect('mongodb://localhost:27017/test'，{ useUnifiedTopology: true ,
 mongoose.connect('mongodb://username:pass@127.0.0.1/crud?authSource=admin',{ useUnifiedTopology: true ,useNewUrlParser:true});
 //authSource=admin 参数规定 用于验证的用户来自 admin 数据库
 ```
+
+经测试，可以连接远程的 mongodb 数据库，前提是 相应的端口开放
 
 端口号若是27017，可省
 

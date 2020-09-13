@@ -6,8 +6,6 @@ sidebar: false
 
 ### - [微信小程序原生笔记](/notes/原生笔记.md)  
 
-### - [wepy 框架 笔记](/notes/wepy框架.md)
-
 ### - [MongoDB 笔记](/notes/MongoDB.md)
 ### - [Node 笔记](/notes/node.md)
 
@@ -17,6 +15,12 @@ sidebar: false
 
 ### - [Vue项目 优化总结](/summary/optimize.md)
 Vue项目 优化总结
+
+### - [技术社区项目](/summart/community_node.md)  
+总结 community_node 项目中的 新功能点
+
+### - [校园猫猫图鉴](/notes/campus_cat_book.md)  
+campus_cat_book  项目总结
 
 ## 文章
 ### - 第一次搭建博客
@@ -30,5 +34,7 @@ Vue项目 优化总结
 -   单线程
 -   执行机制
 
+
+### - [在scoped 的style 下层叠第三方组件样式](/article/style_scoped.md)
 
 

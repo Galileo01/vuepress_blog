@@ -111,7 +111,7 @@ serve.listen(8000,()=>{
 })
 ```
 
-//node 返回utf-8的编码，
+//node 默认返回utf-8的编码，
 
 ### 六.Node 的模块
 
@@ -201,9 +201,9 @@ b.js    **只会加载1次**，第二次 从**缓存 读取**
 
   - 加载引入这个  **入口文件**，
 
-    若 main为空/package.json 不存在，默认转为加载  index.js 
+    若 main为空/package.json 不存在，默认转为加载  index.js ，index.node .....
 
-    若也不存在，继续向上一级文件的 node_modules 查找，
+    若也不存在，继续**向上一级文件的 node_modules 查找**，
 
     找到盘根都没有就报错
 
@@ -226,7 +226,7 @@ es6 官方规范了模块系统，在script标签 添加 **type="module"** 使�
   import qs from 'qs';//适用于默认导出
   ```
 
-- 默认导入
+- 命名导入
 
 
   ```js
@@ -237,7 +237,7 @@ es6 官方规范了模块系统，在script标签 添加 **type="module"** 使�
 
 ```js
 import * as Module from '/modules/module.mjs';//* 代表所有  ，as 重命名
-//将模块内所有的可用的导出，导入到模块对象Module上，可以像使用对象一样使用，代码更简洁
+//将模块内所有的可用的导出，导入到模块对象Module上，可以像使用对象一样使用：Module.xxx ，代码更简洁
 
 const page= import('./page.vue')//作为导入函数调用，将其作为参数传递给模块的路径  适用于 页面的懒加载
 ```
@@ -277,11 +277,11 @@ const page= import('./page.vue')//作为导入函数调用，将其作为参数�
 
 - `CommonJs`导出的是变量的一份拷贝，`ES6 Module`导出的是变量的绑定（引用）
 
-- `CommonJs`是单个值导出，`ES6 Module`可以导出多个
+- `CommonJs`是单个值导出（exports ），`ES6 Module`可以导出多个（命名导出）
 
 - `CommonJs`是动态语法可以写在判断里，`ES6 Module`**静态语法**只能写**在顶层**
 
-   `ES6 模块编译时执行，而CommonJS模块总是在运行时加载`
+   ES6 模块**编译时执行**，而CommonJS模块总是在**运行时加载**
 
 - `CommonJs`的 `this` 是当前模块，`ES6 Module`的 `this` 是 `undefined`
 
@@ -291,7 +291,7 @@ const page= import('./page.vue')//作为导入函数调用，将其作为参数�
 
 - 按照ES6标准 ，书写import 和export 代码
 
-- 运行文件时时  添加 --experimental-modules 参数
+- **运行文件时时**  添加 --experimental-modules 参数
 
   node --experimental-modules .\b.mjs
 
@@ -371,8 +371,8 @@ serve.on('request', (req, res) => {
 const querystring = require('querystring');
 const util = require('util');
 
-let postParams='';
-        //通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
+let postParams='';//字符串
+        //通过req的data事件监听函数，每当接受到请求体的数据，就已数据块的方式 拼接 到post变量中
         req.on('data',chunk=>{
             postParams+=chunk;
         });
@@ -623,7 +623,7 @@ npm -v 查看版本
 
 **Web 开发框架**    提高开发的效率
 
-express，koa 等
+**express**，**koa** 等
 
 #### 基本使用
 
@@ -673,13 +673,13 @@ app.listen(8080,()=>{
 
 - 获取get 请求参数
 
-  req.query  一个处理好的参数对象
+  req.**query**  一个处理好的参数对象
 
 - 获取post 请求参数
 
-  - 使用express 自带的**中间件** 解析post 参数
+  - 使用**express** 自带的**中间件** 解析post 参数
 
-    使用以下中间件，填充req.body (req.body 默认为空)
+    使用以下中间件，填充**req.body** (req.body 默认为空)
   
     ```js
     app.use(express.json()); // for parsing application/json
@@ -945,7 +945,7 @@ session和token 各有利弊，session 需要在服务器存储状态，token不
 
       jwt.sign(payload, secretOrPrivateKey, [options, callback])
 
-      **payload**：object/string,      携带的数据，对象会被自动转换为json 
+      **payload**：object/string,      携带的数据，**对象会被自动转换为json** 
 
       **secretOrPrivateKey** : 密钥，**与验证的的时候必须一致**
 
@@ -1022,13 +1022,13 @@ session和token 各有利弊，session 需要在服务器存储状态，token不
 
    - express 默认
 
-     Express带有内置的错误处理程序，可处理应用程序中可能遇到的任何错误。该默认的错误处理中间件功能已添加到中间件功能堆栈的末尾。
+     Express带有内置的错误处理程序，可处理应用程序中可能遇到的任何错误。该默认的错误处理中间件功能已添加到**中间件功能堆栈的末尾。**
 
      **将错误传递给`next(err)`**您并且未在自定义错误处理程序中**进行处理**，则**它将由内置/自定义错误处理程序进行处理**
 
    - 自定义
 
-   定义错误处理中间件功能的方式与其他中间件功能相同，只是错误处理功能具有四个参数而不是三个参数 `(err, req, res, next)`  必须写全 4个
+   定义错误处理中间件功能的方式与其他中间件功能相同，只是错误处理功能具有四个参数而不是三个参数 `(err, req, res, next)`  **必须写全 4个**
 
    ````js
    app.use(function (err, req, res, next) {
@@ -1111,7 +1111,7 @@ app.post('/upload', upload.single('logo'), function(req, res, next){
 
 ```
 
-**注**:single（**filename**）/array(**filname**)    传入的filename 要和 form 表单 name 字段一致
+**注**:single（**filename**）/array(**filname**)    **传入的filename 要和 form 表单 name 字段一致**
 
 文件信息
 

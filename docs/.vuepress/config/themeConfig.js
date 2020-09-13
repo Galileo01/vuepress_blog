@@ -1,16 +1,16 @@
 module.exports={
     nav: [
-        { text: 'Home', link: '/' },
+        { text: '主页', link: '/' },
         {
-            text: 'Category',
+            text: '分类',
             items: [
-                { text: 'Guide', link: '/guide.md' },
-                { text: 'Note', link: '/Notes.md' },
-                { text: 'Summary', link: '/Summaries.md' },
-                { text: 'Article', link: '/Articles.md' },
+                { text: '导航', link: '/guide.md' },
+                { text: '笔记', link: '/Notes.md' },
+                { text: '总结', link: '/Summaries.md' },
+                { text: '文章', link: '/Articles.md' },
             ],
         },
-        { text: 'About', link: '/about' },
+        { text: '关于', link: '/about' },
         { text: 'Github', link: 'https://github.com/Galileo01' },
     ],
     sidebar: 'auto',
