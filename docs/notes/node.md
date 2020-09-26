@@ -179,7 +179,7 @@ module.exports=add;//正确
 
 - **优先从缓存加载模块**
 
-![image-20200731210206061](node.assets/image-20200731210206061.png)
+![image-20200731210206061](https://cdn.jsdelivr.net/gh/Galileo01/imgCloud@master/image-20200731210206061.png)
 
 'b.js 被加载了' 只会 输出一次
 

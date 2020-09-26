@@ -7,11 +7,12 @@
     "dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "deploy": "bash deploy.sh",
-    "push:linux":" scp -r ./docs/.vuepress/dist/*  admin@121.41.225.12:/home/admin/website/index"
+    "push:linux":" scp -r ./docs/.vuepress/dist/*  admin@121.41.225.12:/home/admin/website/index",
+    "ssh_link":"ssh second"
   },
   "repository": {
     "type": "git",
-    "url": "hhttps://github.com/Galileo01/vuepress_blog.git"
+    "url": "https://github.com/Galileo01/vuepress_blog.git"
   },
   "keywords": [],
   "author": "",

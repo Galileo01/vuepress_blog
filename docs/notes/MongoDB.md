@@ -150,7 +150,7 @@
 
 ### 一.三个重要概念
 
-<img src="MongoDB.assets/image-20200804154707582.png" alt="image-20200804154707582" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/Galileo01/imgCloud@master/image-20200804154707582.png" alt="image-20200804154707582" style="zoom:67%;" />
 
 - mongoDB 中 数据库和集合  **不需要我们手动创建**
 
@@ -572,7 +572,7 @@ mongoose.connect('mongodb://username:pass@127.0.0.1/crud?authSource=admin',{ use
 
 - 操作数据库
 
-  - 创建 模式对象 Schema  ,修饰文档结构
+  - 创建 **模式对象 Schema**  ,修饰文档结构
 
     ```js
     const stuSchema=new mongoose.Schema({

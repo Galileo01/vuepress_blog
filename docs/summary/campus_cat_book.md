@@ -188,7 +188,7 @@
    
    7. 小程序的 请求域名配置
    
-      ![image-20200913150230486](campus_cat_book.assets/image-20200913150230486.png)
+      ![image-20200913150230486](https://cdn.jsdelivr.net/gh/Galileo01/imgCloud@master/image-20200913150230486.png)
    
       ​     需要注意的是：不支持ip，
    
