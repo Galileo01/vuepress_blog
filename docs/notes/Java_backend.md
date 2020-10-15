@@ -45,7 +45,7 @@
 
 小练习：简易“框架”，可以获取任何类的字节码对象，并执行该类的任何方法
 
-## 二.注解
+##  二.注解
 
 给编译器看的， **用来给包，类，字段，方法，进行说明，注释**
 
@@ -242,10 +242,6 @@ SAX：逐行读取，事件驱动
 
 
 
-### 四.Servlet
-
-
-
 ### 四.MVC开发模式 
 
 Servlet->JSP(接话servlet 代码)->MVC 开发模式
@@ -266,7 +262,7 @@ jsp 中既有java 代码，又有html 代码
 
 
 
-### Maven
+### 五.Maven
 
 一个java 编写的 项目管理和综合工具
 
@@ -277,11 +273,11 @@ jsp 中既有java 代码，又有html 代码
 
 简化构建过程、统一构建体系、提供高质量的项目信息、
 
-#### 一.安装
+#### 1..安装
 
 下载，解压，配置环境路径
 
-#### 二.仓库种类
+#### 2.仓库种类
 
 本地，远程【私服】，中央仓库 公网
 
@@ -291,15 +287,17 @@ jsp 中既有java 代码，又有html 代码
 
 本地仓库的构建，settings.xml的配置
 
-#### 三.maven 标准目录结构
+#### 3.maven 标准目录结构
 
 ![image-20200925151615255](https://cdn.jsdelivr.net/gh/Galileo01/imgCloud@master/image-20200925151615255.png)
 
-#### 四.声明周期
+#### 4.声明周期
 
 ![image-20200925203125714](https://cdn.jsdelivr.net/gh/Galileo01/imgCloud@master/image-20200925203125714.png)
 
-### Spring boot
+## Spring boot
+
+### 六.Spring 入门
 
 #### 微服务
 
@@ -313,11 +311,19 @@ jsp 中既有java 代码，又有html 代码
 
 1. 创建 spring-boot 项目
 
-   配置maven 仓库源，为阿里镜像
+   配置maven 仓库源，为**阿里镜像**
 
-   使用spring initializr 创建 spring boot项目
+   使用**spring initializr** 快速创建 spring boot项目
 
    编写 controllrer 
+
+   目录结构
+
+   - 主程序已经生成，只需编写业务
+   - resources 目录
+     - static :保存静态资源
+     - templates ：保存模板页面
+     - application.properties ：Spring boot 的配置文件
 
 2. 打包
 
@@ -362,7 +368,7 @@ maven  ：clean  之后 package
 
    spring-boot 把**功能场景**进行抽取，做成 **starters**，导入相关场景的依赖
 
-### 3.主程序/入口类
+#### 3.主程序/入口类
 
 **@SpringBootApplication** 注解：标记这个类 是Spring-boot 的主程序类，运行这个类的main 方法来启动应用
 
@@ -376,3 +382,142 @@ maven  ：clean  之后 package
 
 
 
+
+
+### 七.Spring Boot 配置
+
+#### 1.默认配置文件 
+
+支持的配置文件包括 **yaml**，properties  （application.yml/application.properties  ）
+
+##### YAML 语法
+
+- 1. yaml 基本语法
+
+k:(空格)v：表示一对键值对**（空格必须有）**；
+
+以**空格**的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的
+
+```yaml
+server:
+    port: 8081
+    path: /hello
+```
+
+属性和值也是大小写敏感；
+
+- 2、值的写法
+
+##### 字面量：普通的值（数字，字符串，布尔）
+
+​	k: v：字面直接来写；
+
+​		字符串默认不用加上单引号或者双引号；
+
+​		""：双引号；不会转义字符串里面的特殊字符；特殊字符会作为本身想表示的意思
+
+​				name:   "zhangsan \n lisi"：输出；zhangsan 换行  lisi
+
+​		''：单引号；会转义特殊字符，特殊字符最终只是一个普通的字符串数据
+
+​				name:   ‘zhangsan \n lisi’：输出；zhangsan \n  lisi
+
+##### 对象、Map（属性和值）（键值对）：
+
+​	k: v：在下一行来写对象的属性和值的关系；注意缩进
+
+​		对象还是k: v的方式
+
+```yaml
+friends:
+		lastName: zhangsan
+		age: 20
+```
+
+行内写法：
+
+```yaml
+friends: {lastName: zhangsan,age: 18}
+```
+
+##### 数组（List、Set）：
+
+用- 值表示数组中的一个元素
+
+```yaml
+pets:
+ - cat
+ - dog
+ - pig
+```
+
+行内写法
+
+```yaml
+pets: [cat,dog,pig]
+```
+
+##### YML 配置文件值的注入
+
+见yml 包下代码
+
+1.使用 @ConfigurationProperties注解 
+
+2.@Value注解
+
+
+
+### Spring-boot
+
+@Bean 注解 将函数添加到容器中
+
+@Autowired 方法参数从容器获取，自动装配
+
+### AOP 面向切面编程
+
+它利用一种称为"**横切**"的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用模块，并将其命名为"Aspect"，即切面。所谓"切面"，简单说就是那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块之间的耦合度，并有利于未来的可操作性和可维护性
+
+OOP是纵向的，AOP是横向的
+
+[参考链接](https://www.jianshu.com/p/0799aa19ada1)
+
+一般拿来做日志输出，
+
+#### 基本概念
+
+##### 连接点 joinpoint
+
+就是被拦截到的方法
+
+##### 切入点 pointcut
+
+被抽取了共性功能的方法
+
+切入点一定是连接点，连接点不一定是切入点
+
+##### 通知 Advice
+
+共性功能组成的代码逻辑，被拦截之后执行的代码
+
+定义在通知类里
+
+- 前置通知
+- 后置通知
+
+##### 引入（introduction）
+
+在不修改代码的前提下，引入可以在**运行期**为类动态地添加一些方法或字段
+
+##### 目标对象
+
+代理的目标对象
+
+原来被切入的类不能正常使用，spring 创建代理对象
+
+##### AOP代理
+
+##### 织入
+
+##### 切面
+
+切面就是对横切关注点的抽象，切入点和通知的关系抽象

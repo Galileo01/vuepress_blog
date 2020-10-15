@@ -7,7 +7,7 @@ tags:
 ---
 ## About Me
 
-计算机科学与技术 大二本科在读
+计算机科学与技术专业 2018级本科在读
 
 - [Github](https://github.com/Galileo01)   
  较大型的项目

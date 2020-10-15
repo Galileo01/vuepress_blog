@@ -68,18 +68,6 @@ function getTotal1(one:number,two:number){ // 对函数参数进行 类型注解
 const total=getTotal1(one,two);// 根据参数注解 进行total 的 类型推断
 ```
 
-### 提前补充-TS的模块
-
-1. 全局模块
-
-在相同的项目里创建不同ts文件，默认是**处于全局命名空间中**（意思是默认情况下，ts文件可以使用另一个ts 文件里的变量），也会导致**一个命名冲突的问题**，推荐使用文件模块来解决这个问题
-
-2. 文件模块
-
-如果在你的 TypeScript 文件的根级别位置含有 `import` 或者 `export`，那么它会在这个文件中创建**一个本地的作用域**
-
-在ts 末尾添加 export {}
-
 ### 3.函数参数和返回类型的注解
 
 ####  参数类型和返回值
@@ -285,7 +273,7 @@ tsc 命令 ，调用该文件 进行编译
     // "allowJs": true,                       /* 也编译 js 文件 */
     // "checkJs": true,                       /* Report errors in .js files. */
     // "sourceMap": true,                     /*生成.map 文件，链接js 和ts 代码映射 corresponding '.map' file. */
-    // "outFile": "./",                       /* Concatenate and emit output to single file. */
+    // "outFile": "./",                       /* 生成到单个文件，此时module不支持commonjs */
     // "outDir": "./",                        /*生成的js 目录 */
     // "rootDir": "./",                       /* 源文件所在牡目录 */
 
@@ -371,4 +359,94 @@ enum Status{
         },
 
  ```
+
+### 11.泛型
+
+泛型在**成员之间**提供有意义的类型约束，这些成员可以是，类的属性，方法，函数参数，返回值
+
+#### 函数中使用
+
+function functionName<T> 使用泛型
+
+约束函数的参数类型一致
+
+```ts
+// 需求 保证join 函数的参数类型一致
+function join<T>(a:T,b:T){
+    return `${a}${b}`;
+}
+join<string>('a','b');//在使用的时候必须明确 T的类型
+join<number>(1,2);
+
+//reverse 函数，保证 返回值和参数的类型一致
+function reverse<T>(param:T[]):T[]{
+    const result:T[]=[];
+    for(let i=param.length-1;i>=0;i--)
+    {
+        result.push(param[i]);
+    }
+    return result;
+}
+```
+
+#### 类中使用
+
+class className<T>{
+
+}
+
+### 13.命名空间
+
+在不基于文件模块**(使用单文件**)进行模块化时，创建的变量有可能暴露到全局，ts 提供了命名空间
+
+```ts
+namespace Home{
+    //向外暴露xxx
+    export function xxx(){}
+    
+}
+```
+
+原理是转换为，立即执行函数，闭包，保证变量不泄露到全局
+
+可以继续嵌套
+
+### 14.声明空间和变量空间
+
+TS中存在声明空间和变量空间
+
+#### 声明空间
+
+包括用来进行类型注解的内容：**类，接口，类型别名**
+
+不能把 **接口，类型** 当作变量来使用
+
+```ts
+class Test{}
+const a=Test;//不报错，类可以当作变量使用
+
+interface People{
+
+}
+
+const p=People;//报错，interface 定义在声明空间，不能当作 变量使用
+```
+
+#### 变量空间
+
+包含可以用作变量的内容：类，变量等
+
+### 15.模块
+
+####  全局模块
+
+**默认情况**下，当你开始在一个文件夹下编写ts 文件，它处于**全局命名空间**中，不同文件处于统一命名空间，**可以直接使用其他ts 文件的变量**
+
+但这是很危险的
+
+推荐使用ES6的文件模块，当跟级别有 import/export 就会产生一个文件内的作用域
+
+#### 文件模块
+
+在ts 中推荐使用ES6的module 语法，使用import/export 语法。而不是commonjs 因为commonjs **是运行时加载**，**导致ts 无法进行类型推断**
 
