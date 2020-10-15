@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何在scoped 修饰下的style 下层叠第三方组件的样式 | Mark&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="个人博客">
+    <meta name="keywords" content="前端博客,mark">
+    <link rel="preload" href="/assets/css/0.styles.84987be6.css" as="style"><link rel="preload" href="/assets/js/app.3e4d0eed.js" as="script"><link rel="preload" href="/assets/js/2.68aca893.js" as="script"><link rel="preload" href="/assets/js/11.b7a3e839.js" as="script"><link rel="prefetch" href="/assets/js/10.a9ff179f.js"><link rel="prefetch" href="/assets/js/12.87313dfa.js"><link rel="prefetch" href="/assets/js/13.1ce0f3e9.js"><link rel="prefetch" href="/assets/js/14.3be2a475.js"><link rel="prefetch" href="/assets/js/15.9c338a9c.js"><link rel="prefetch" href="/assets/js/16.e329f9d4.js"><link rel="prefetch" href="/assets/js/17.e9295561.js"><link rel="prefetch" href="/assets/js/18.f1c319e0.js"><link rel="prefetch" href="/assets/js/19.da289b65.js"><link rel="prefetch" href="/assets/js/20.8a61d6bd.js"><link rel="prefetch" href="/assets/js/21.38e2dda9.js"><link rel="prefetch" href="/assets/js/22.38f90f15.js"><link rel="prefetch" href="/assets/js/23.c140781e.js"><link rel="prefetch" href="/assets/js/24.4bf67378.js"><link rel="prefetch" href="/assets/js/25.e62002b0.js"><link rel="prefetch" href="/assets/js/26.37c2aacd.js"><link rel="prefetch" href="/assets/js/27.36bcaeeb.js"><link rel="prefetch" href="/assets/js/3.d104a03d.js"><link rel="prefetch" href="/assets/js/4.a6f13a86.js"><link rel="prefetch" href="/assets/js/5.9038bd49.js"><link rel="prefetch" href="/assets/js/6.f0c06a32.js"><link rel="prefetch" href="/assets/js/7.d806bef0.js"><link rel="prefetch" href="/assets/js/8.0617fe87.js"><link rel="prefetch" href="/assets/js/9.ce94c0df.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.84987be6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Mark's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide.html" class="nav-link">
+  导航
+</a></li><li class="dropdown-item"><!----> <a href="/Notes.html" class="nav-link">
+  笔记
+</a></li><li class="dropdown-item"><!----> <a href="/Summaries.html" class="nav-link">
+  总结
+</a></li><li class="dropdown-item"><!----> <a href="/Articles.html" class="nav-link">
+  文章
+</a></li></ul></div></div><div class="nav-item"><a href="/about.html" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/Galileo01" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide.html" class="nav-link">
+  导航
+</a></li><li class="dropdown-item"><!----> <a href="/Notes.html" class="nav-link">
+  笔记
+</a></li><li class="dropdown-item"><!----> <a href="/Summaries.html" class="nav-link">
+  总结
+</a></li><li class="dropdown-item"><!----> <a href="/Articles.html" class="nav-link">
+  文章
+</a></li></ul></div></div><div class="nav-item"><a href="/about.html" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/Galileo01" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>如何在scoped 修饰下的style 下层叠第三方组件的样式</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="如何在scoped-修饰下的style-下层叠第三方组件的样式"><a href="#如何在scoped-修饰下的style-下层叠第三方组件的样式" class="header-anchor">#</a> 如何在scoped 修饰下的style 下层叠第三方组件的样式</h1> <h6 id="本文章解决修改element-ui-等包含的第三方-组件-内部-默认的样式-时-，有时候-在-scoped-的style-下-定义样式无法起作用，无法覆盖"><a href="#本文章解决修改element-ui-等包含的第三方-组件-内部-默认的样式-时-，有时候-在-scoped-的style-下-定义样式无法起作用，无法覆盖" class="header-anchor">#</a> .本文章解决修改element-ui 等包含的第三方 组件 内部 默认的样式 时 ，有时候 在 scoped 的style   下 定义样式无法起作用，无法覆盖</h6> <h3 id="问题起因"><a href="#问题起因" class="header-anchor">#</a> 问题起因</h3> <p>在Vue 项目中，我们有时候 会主动修改第三方组件的样式,但发现 对于一些组件，有时候无论我们怎么修改 样式就是无法其效果，或者说无法层叠掉组件库默认的样式 ， 甚至使用  <strong>!import</strong>  都起不了作用，原因在于大多是 情况下，我们 给 vue 文件 的style 节点 添加了<strong>scoped</strong> 属性</p> <ul><li><p>scoped 的原理</p> <p>style 节点 的 scoped  属性，表示 style 内 的 所有 css 样式  旨在当前 组件 有效 ，所以 为了<strong>避免在不同组件下 如果同通过 某一选择器 修饰样式 会对 其他组件 产生层叠</strong>，修饰 ，一般都会 使用scoped 。 在编译.vue文件时，<strong>vue-loader</strong> 会对 style 节点带有scoped 属性的   模板进行处理</p> <p>原理：</p> <p>编译前：</p> <div class="language-html extra-class"><pre class="language-html"><code>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>example<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>hi<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+	<span class="token selector">.example</span> <span class="token punctuation">{</span>
+ 		 <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>编译后：</p> <div class="language-html extra-class"><pre class="language-html"><code>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>example<span class="token punctuation">&quot;</span></span> <span class="token attr-name">data-v-7668812d</span><span class="token punctuation">&gt;</span></span>hi<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+	<span class="token selector">.example[data-v-7668812d]</span> <span class="token punctuation">{</span>
+  		<span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>vue-loader 会给 标签 添加 <strong>唯一的标识‘</strong>，再 让css 通过  **属性选择器 **  选中当前组件的 模板内的 标签，从而达到 只 再当前 组件起作用的效果</p></li></ul> <h3 id="解决方法-使用-（深度作用选择器）"><a href="#解决方法-使用-（深度作用选择器）" class="header-anchor">#</a> 解决方法-使用&gt;&gt;&gt; （深度作用选择器）</h3> <p>编译前：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token selector">.a &gt;&gt;&gt; .b</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>编译后：</p> <div class="language-html extra-class"><pre class="language-html"><code>.a[data-v-f3f3eg9] .b { /* ... */ }
+</code></pre></div><p>深度作用选择器   <strong>&gt;&gt;&gt;</strong>  是 <strong>vue-loader</strong> 提供的 功能，作用在于将选择器的 作用 <strong>深入子组件</strong>，</p> <p>当遇到   <strong>&gt;&gt;&gt;</strong>   的时候会将  <strong>&gt;&gt;&gt;</strong>   位置替换成组件的hash值</p> <p>**注意：**有些像 Sass 之类的预处理器无法正确解析 <code>&gt;&gt;&gt;</code>，这种情况下可以使用 <code>/deep/</code> 或 <code>::v-deep</code> 操作符取而代之——两者都是 <code>&gt;&gt;&gt;</code> 的别名，同样可以正常工作</p> <p><a href="/article/[https://vue-loader.vuejs.org/zh/guide/scoped-css.html#深度作用选择器](https://vue-loader.vuejs.org/zh/guide/scoped-css.html#深度作用选择器)">vue-loader 官方链接</a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">6/13/2020, 12:09:27 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.3e4d0eed.js" defer></script><script src="/assets/js/2.68aca893.js" defer></script><script src="/assets/js/11.b7a3e839.js" defer></script>
+  </body>
+</html>

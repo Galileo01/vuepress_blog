@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue项目优化笔记 | Mark&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="个人博客">
+    <meta name="keywords" content="前端博客,mark">
+    <link rel="preload" href="/assets/css/0.styles.84987be6.css" as="style"><link rel="preload" href="/assets/js/app.3e4d0eed.js" as="script"><link rel="preload" href="/assets/js/2.68aca893.js" as="script"><link rel="preload" href="/assets/js/26.37c2aacd.js" as="script"><link rel="prefetch" href="/assets/js/10.a9ff179f.js"><link rel="prefetch" href="/assets/js/11.b7a3e839.js"><link rel="prefetch" href="/assets/js/12.87313dfa.js"><link rel="prefetch" href="/assets/js/13.1ce0f3e9.js"><link rel="prefetch" href="/assets/js/14.3be2a475.js"><link rel="prefetch" href="/assets/js/15.9c338a9c.js"><link rel="prefetch" href="/assets/js/16.e329f9d4.js"><link rel="prefetch" href="/assets/js/17.e9295561.js"><link rel="prefetch" href="/assets/js/18.f1c319e0.js"><link rel="prefetch" href="/assets/js/19.da289b65.js"><link rel="prefetch" href="/assets/js/20.8a61d6bd.js"><link rel="prefetch" href="/assets/js/21.38e2dda9.js"><link rel="prefetch" href="/assets/js/22.38f90f15.js"><link rel="prefetch" href="/assets/js/23.c140781e.js"><link rel="prefetch" href="/assets/js/24.4bf67378.js"><link rel="prefetch" href="/assets/js/25.e62002b0.js"><link rel="prefetch" href="/assets/js/27.36bcaeeb.js"><link rel="prefetch" href="/assets/js/3.d104a03d.js"><link rel="prefetch" href="/assets/js/4.a6f13a86.js"><link rel="prefetch" href="/assets/js/5.9038bd49.js"><link rel="prefetch" href="/assets/js/6.f0c06a32.js"><link rel="prefetch" href="/assets/js/7.d806bef0.js"><link rel="prefetch" href="/assets/js/8.0617fe87.js"><link rel="prefetch" href="/assets/js/9.ce94c0df.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.84987be6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Mark's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide.html" class="nav-link">
+  导航
+</a></li><li class="dropdown-item"><!----> <a href="/Notes.html" class="nav-link">
+  笔记
+</a></li><li class="dropdown-item"><!----> <a href="/Summaries.html" class="nav-link">
+  总结
+</a></li><li class="dropdown-item"><!----> <a href="/Articles.html" class="nav-link">
+  文章
+</a></li></ul></div></div><div class="nav-item"><a href="/about.html" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/Galileo01" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide.html" class="nav-link">
+  导航
+</a></li><li class="dropdown-item"><!----> <a href="/Notes.html" class="nav-link">
+  笔记
+</a></li><li class="dropdown-item"><!----> <a href="/Summaries.html" class="nav-link">
+  总结
+</a></li><li class="dropdown-item"><!----> <a href="/Articles.html" class="nav-link">
+  文章
+</a></li></ul></div></div><div class="nav-item"><a href="/about.html" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/Galileo01" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Vue项目优化笔记</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/summary/optimize.html#vue项目优化笔记" class="sidebar-link">Vue项目优化笔记</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/summary/optimize.html#开发阶段" class="sidebar-link">开发阶段</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/summary/optimize.html#_1-添加加载进度条" class="sidebar-link">1.添加加载进度条</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_2-销毁组件时一并释放组件的-资源" class="sidebar-link">2.销毁组件时一并释放组件的 资源</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_3-路由按需加载" class="sidebar-link">3.路由按需加载</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_4-element-组件按需加载" class="sidebar-link">4.element 组件按需加载</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_5-利用object-freeze-提升性能" class="sidebar-link">5.利用Object.freeze()提升性能</a></li></ul></li><li><a href="/summary/optimize.html#上线阶段" class="sidebar-link">上线阶段</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/summary/optimize.html#_1-通过chainwebpack-自定义入口文件" class="sidebar-link">1.通过chainWebpack  自定义入口文件</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_2-生成环境下移除console" class="sidebar-link">2.生成环境下移除console</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_3-生成打包报告" class="sidebar-link">3. 生成打包报告</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_4-使用externals-加载外部资源" class="sidebar-link">4.使用externals 加载外部资源</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_5-gzip-压缩" class="sidebar-link">5.gzip 压缩</a></li><li class="sidebar-sub-header"><a href="/summary/optimize.html#_6-ssr-服务端渲染（后面再研究）" class="sidebar-link">6.SSR 服务端渲染（后面再研究）</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="vue项目优化笔记"><a href="#vue项目优化笔记" class="header-anchor">#</a> Vue项目优化笔记</h2> <p>由于Vue-cli 已经预先对webpack 进行了设置，所以需要新建一个vue.config.js进行自定义的配置</p> <p>该文件 通过<strong>module.exports</strong> 导出一个配置对象</p> <p>配置时可以选择configureWebpack 或者chainWebpack 方法进行配置，</p> <p>区别在于 configureWebpack 使用的是<strong>对象方式</strong>，而chainWebpack  使用<strong>链式调用方法</strong>来配置</p> <p>configureWebpack 较为简单，chainWebpack   提供的配置粒度更大</p> <h2 id="开发阶段"><a href="#开发阶段" class="header-anchor">#</a> 开发阶段</h2> <h3 id="_1-添加加载进度条"><a href="#_1-添加加载进度条" class="header-anchor">#</a> 1.添加加载进度条</h3> <p>添加页面加载的进度条，提供一定的视觉效果</p> <p>基于 nprogress，配合axios 的拦截器</p> <p>在request 的拦截器中执行**NProgress.start()**显示进度，response 的拦截器 执行 **NProgress.done() **隐藏  进度条</p> <h3 id="_2-销毁组件时一并释放组件的-资源"><a href="#_2-销毁组件时一并释放组件的-资源" class="header-anchor">#</a> 2.销毁组件时一并释放组件的 资源</h3> <p>主要是指 组件内的 事件监听。释放浏览器资源占用</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span>Fn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'hook:beforeDestory'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>   <span class="token comment">//使用hook:监听组件生命周期，在绑定事件的时候就监听销毁生命周期，避免以往</span>
+     window<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span>Fn<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_3-路由按需加载"><a href="#_3-路由按需加载" class="header-anchor">#</a> 3.路由按需加载</h3> <p><strong>这个应该在最开始写项目之前就应该配置好</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">Login</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'views/Login'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//使用 import 函数的方式懒加载</span>
+</code></pre></div><h3 id="_4-element-组件按需加载"><a href="#_4-element-组件按需加载" class="header-anchor">#</a> 4.element 组件按需加载</h3> <p><strong>这个应该在最开始写项目之前就应该配置好</strong></p> <p>使用插件 vue-cli-plugin-element，按需加载 element 的组件，减少 打包体积</p> <h3 id="_5-利用object-freeze-提升性能"><a href="#_5-利用object-freeze-提升性能" class="header-anchor">#</a> 5.利用Object.freeze()提升性能</h3> <p><code>Object.freeze()</code> 可以冻结一个对象，冻结之后不能向这个对象添加新的属性，<strong>不能修改其已有属性的值，不能删除已有属性，以及不能修改该对象已有属性的可枚举性、可配置性、可写性</strong>。该方法返回被冻结的对象。</p> <p>Vue 在遇到像 <code>Object.freeze()</code> 这样被设置为不可配置之后的对象属性时，<strong>不会为对象加上 setter getter 等数据劫持的方法</strong> ，减少性能开销</p> <p><strong>适合展示类的场景</strong>，如果你的数据属性需要改变，可以<strong>重新替换</strong>成一个新的 <code>Object.freeze()</code>的对象</p> <h2 id="上线阶段"><a href="#上线阶段" class="header-anchor">#</a> 上线阶段</h2> <h3 id="_1-通过chainwebpack-自定义入口文件"><a href="#_1-通过chainwebpack-自定义入口文件" class="header-anchor">#</a> 1.通过chainWebpack  自定义入口文件</h3> <p>开发和生产环境往往不同，需要定义不同的入口文件</p> <div class="language-js extra-class"><pre class="language-js"><code>   <span class="token keyword">if</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span><span class="token punctuation">)</span><span class="token comment">//生产环境下使用对应入口文件</span>
+        <span class="token punctuation">{</span>
+            configuration<span class="token punctuation">.</span>entry<span class="token operator">=</span><span class="token string">'./src/main-prod.js'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><h3 id="_2-生成环境下移除console"><a href="#_2-生成环境下移除console" class="header-anchor">#</a> 2.生成环境下移除console</h3> <p>在开发阶段打印，生成打包文件，<strong>生产阶段时移除console</strong></p> <p>安装babel 的插件 babel-plugin-transform-remove-console ,并进行配置</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">//在babel.config.js 文件中配置</span>
+
+<span class="token keyword">const</span> Plugins <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Plugins<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'transform-remove-console'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><span class="token comment">//NODE_ENV =='developmenp'</span>
+  <span class="token comment">// 为开发环境修改配置...</span>
+<span class="token punctuation">}</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  <span class="token string">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span>
+     <span class="token comment">//...省略</span>
+    <span class="token operator">...</span>Plugins
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_3-生成打包报告"><a href="#_3-生成打包报告" class="header-anchor">#</a> 3. 生成打包报告</h3> <p>npm run build --report  /  vue UI  使用gui 工具更加直观查看各个模块的 体积</p> <h3 id="_4-使用externals-加载外部资源"><a href="#_4-使用externals-加载外部资源" class="header-anchor">#</a> 4.使用externals 加载外部资源</h3> <ol><li><p>在vue.config.js 声明 externals节点</p> <div class="language-js extra-class"><pre class="language-js"><code> externals <span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'vue'</span><span class="token operator">:</span> <span class="token string">'Vue'</span><span class="token punctuation">,</span><span class="token comment">//包名：全局变量名称</span>
+                <span class="token comment">// 'element-ui': 'element-ui',</span>
+                <span class="token string">'axios'</span><span class="token operator">:</span> <span class="token string">'axios'</span><span class="token punctuation">,</span>
+                <span class="token string">'vue-router'</span><span class="token operator">:</span> <span class="token string">'VueRouter'</span><span class="token punctuation">,</span>
+                <span class="token string">'xlsx'</span><span class="token operator">:</span><span class="token string">'xlsx'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>在index.html 添加外部资源的 cdn 引入 css以及js文件</p> <p>要选择可靠稳定的cdn网站，</p></li></ol> <h3 id="_5-gzip-压缩"><a href="#_5-gzip-压缩" class="header-anchor">#</a> 5.gzip 压缩</h3> <p>通过前端打包时压缩和服务器打开gzip 可以缩小文件体积和请求的时间</p> <ul><li><p>打包时gzip压缩</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//npm i -D compression-webpack-plugin</span>
+ <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span><span class="token punctuation">)</span><span class="token comment">//生产环境下 使用gzip 压缩文件</span>
+         <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> productionGzipExtensions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'js'</span><span class="token punctuation">,</span> <span class="token string">'css'</span><span class="token punctuation">]</span>
+             <span class="token keyword">const</span> CompressionPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'compression-webpack-plugin'</span><span class="token punctuation">)</span>
+             config<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CompressionPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                 filename<span class="token operator">:</span> <span class="token string">'[path].gz[query]'</span><span class="token punctuation">,</span>   <span class="token comment">// 提示compression-webpack-plugin@3.0.0的话asset改为filename</span>
+                algorithm<span class="token operator">:</span> <span class="token string">'gzip'</span><span class="token punctuation">,</span>
+                 test<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">'\\.('</span> <span class="token operator">+</span> productionGzipExtensions<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">')$'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+               threshold<span class="token operator">:</span> <span class="token number">10240</span><span class="token punctuation">,</span>
+                minRatio<span class="token operator">:</span> <span class="token number">0.8</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+以上配置在 vue<span class="token operator">-</span>cli <span class="token number">3.</span>x 有效
+</code></pre></div><p>经测试 此方法在Vue-cli 4 没有生效，很可能是本来就默认开启了gzip</p></li> <li><p>nginx 下配置</p> <div class="language- extra-class"><pre class="language-text"><code>http {
+  gzip on;
+  gzip_static on;
+  gzip_min_length 1024;#压缩临界值
+  gzip_buffers 4 16k;
+  gzip_comp_level 2;
+  gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php application/vnd.ms-fontobject font/ttf font/opentype font/x-woff image/svg+xml;
+  gzip_vary off;#跟Squid等缓存服务有关，on的话会在Header里增加&quot;Vary: Accept-Encoding&quot;，根据个人情况开关
+  gzip_disable &quot;MSIE [1-6]\.&quot;;
+}
+
+</code></pre></div></li> <li><p>node 下</p> <p>使用compression 中间件压缩文件</p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+  <span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// 开启gzip压缩,如果你想关闭gzip,注释掉下面两行代码，重新执行`node server.js`</span>
+  <span class="token keyword">var</span> compression <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'compression'</span><span class="token punctuation">)</span>
+  app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">compression</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span><span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'server is runing on http://localhost:3000'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div></li></ul> <h3 id="_6-ssr-服务端渲染（后面再研究）"><a href="#_6-ssr-服务端渲染（后面再研究）" class="header-anchor">#</a> 6.SSR 服务端渲染（后面再研究）</h3> <p>持续更新ing</p> <!----></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">8/8/2020, 10:10:30 AM</span></div></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.3e4d0eed.js" defer></script><script src="/assets/js/2.68aca893.js" defer></script><script src="/assets/js/26.37c2aacd.js" defer></script>
+  </body>
+</html>
