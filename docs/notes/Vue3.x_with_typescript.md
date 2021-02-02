@@ -377,9 +377,9 @@ renderTriggered -> onRenderTriggered
 
 #### 新增
 
-- renderTracked
+- renderTracked 直译过来就是`状态跟踪`
 
-  跟踪虚拟 DOM 重新渲染时调用。钩子接收 **debugger event** 作为参数。此事件告诉你**哪个操作**跟踪了组件以及**该操作的目标**对象和键。多用于输出调试
+  它会跟踪页面上所有响应式变量和方法的状态，跟踪虚拟 DOM 重新渲染时调用。钩子接收 **debugger event** 作为参数。此事件告诉你**哪个操作**跟踪了组件以及**该操作的目标**对象和键。多用于输出调试
 
   ```js
   const app = Vue.createApp({
@@ -412,6 +412,126 @@ renderTriggered -> onRenderTriggered
 
   
 
-- renderTriggered
+- renderTriggered`onRenderTriggered`直译过来是`状态触发`，
 
+  它不会跟踪每一个响应式，而是给你变化值的信息，并且**新值和旧值**都会给你明确的展示出来。
   
+  ```js
+  onRenderTriggered((event) => {
+    console.log("状态触发组件--------------->");
+    console.log(event);
+  });
+  ```
+  
+  event 对象的属性
+  
+  ```js
+  - key 那边变量发生了变化
+  - newValue 更新后变量的值
+  - oldValue 更新前变量的值
+  - target 目前页面中的响应变量和函数
+  ```
+
+### 4.响应式侦听
+
+- watchEffect
+
+  为了根据反应状态*自动应用*和*重新应用*副作用，我们可以使用 `watchEffect` 方法。**它立即执行传入的一个函数**，同时响应式追踪其依赖**，并在其依赖变更时重新运行该函数**。
+
+  - 停止侦听
+
+    显式调用返回值以停止侦听
+
+    ```js
+    const stop = watchEffect(() => {
+      /* ... */
+    })
+    
+    // later
+    stop()
+    ```
+
+  - 清除副作用
+
+    有时副作用函数会执行一些异步的副作用，这些响应需要在其失效时清除 (即完成之前状态已改变了) 
+
+    可以传入一个函数接收一个 `onInvalidate` 函数作入参，用来注册清理失效时的回调。当以下情况发生时，这个失效回调会被触发：
+
+    ```js
+    watchEffect(onInvalidate => {
+      const token = performAsyncOperation(id.value)
+      onInvalidate(() => {
+        // id has changed or watcher is stopped.
+        // invalidate previously pending async operation
+        token.cancel()
+      })
+    })
+    ```
+
+- watch
+
+  `watch` 需要侦听特定的数据源，并在回调函数中执行副作用。**默认情况下，它也是惰性的**，即只有当被侦听的源发生变化时才执行回调
+
+  与 [watchEffect](https://v3.cn.vuejs.org/guide/reactivity-computed-watchers.html#watcheffect) 比较，`watch` 允许我们：
+
+  - 懒执行副作用；
+
+  - 更具体地说明什么状态应该触发侦听器重新运行；
+
+  - 访问侦听**状态变化前后的值**
+
+    
+
+  侦听器数据源**是函数返回值的 getter 函数**，也可以直接是 `ref`
+
+```js
+// 侦听一个 getter
+const state = reactive({ count: 0 })
+watch(
+  () => state.count,//一个 getter
+  (count, prevCount) => {
+    /* ... */
+  }
+)
+
+// 直接侦听ref
+const count = ref(0)
+watch(count, (count, prevCount) => {
+  /* ... */
+})
+//侦听器还可以使用数组同时侦听多个源
+watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
+  /* ... */
+})
+```
+
+`watch` 与 [`watchEffect`](https://v3.cn.vuejs.org/guide/reactivity-computed-watchers.html#watcheffect)共享[停止侦听](https://v3.cn.vuejs.org/guide/reactivity-computed-watchers.html#停止侦听)，[清除副作用](https://v3.cn.vuejs.org/guide/reactivity-computed-watchers.html#清除副作用) (相应地 `onInvalidate` 会作为回调的第三个参数传入)、[副作用刷新时机](https://v3.cn.vuejs.org/guide/reactivity-computed-watchers.html#副作用刷新时机)和[侦听器调试](https://v3.cn.vuejs.org/guide/reactivity-computed-watchers.html#侦听器调试)行为
+
+### 5.Teleport
+
+Vue 3.0 内置的传送门组件，通过 to 属性，讲包裹的元素转移到to 属性对应的元素内
+
+用于解决一些逻辑上是父子组件，但真实html 渲染时最好不是父子组件，特别是一些于css 样式有关的场景
+
+to ="selector" 挂载到对应选择器的元素子元素内
+
+
+
+### 6.Suspense
+
+加载异步组件，在异步组件加载完成成并完全渲染之前 suspense 会先**显示 `#fallback` 插槽的内容 。**
+
+```html
+<Suspense>
+  <template>
+    <Suspended-component />
+  </template>
+  <template #fallback>
+    Loading...
+  </template>
+</Suspense>
+
+```
+
+
+<Vssue />

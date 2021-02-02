@@ -862,3 +862,6 @@ const stu = new StuModel({
   抽象出不同的Model 对象，并导出，在路由内调用，操作数据库
 
 放置在不同文件夹
+
+
+<Vssue />

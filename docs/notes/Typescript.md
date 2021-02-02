@@ -247,6 +247,8 @@ abstract class Gril{
 
 ### 8.tsconfig.json文件
 
+https://www.tslang.cn/docs/handbook/compiler-options.html
+
 tsc的编译配置文件
 
 使用：tsc -init 生成tsconfig.json文件
@@ -364,6 +366,8 @@ enum Status{
 
 泛型在**成员之间**提供有意义的类型约束，这些成员可以是，类的属性，方法，函数参数，返回值
 
+在**实现的时候 并不清楚/并不指定 实际使用时的类型**，或者 会用使用的类型很多
+
 #### 函数中使用
 
 function functionName<T> 使用泛型
@@ -450,3 +454,4 @@ const p=People;//报错，interface 定义在声明空间，不能当作 变量�
 
 在ts 中推荐使用ES6的module 语法，使用import/export 语法。而不是commonjs 因为commonjs **是运行时加载**，**导致ts 无法进行类型推断**
 
+<Vssue />
